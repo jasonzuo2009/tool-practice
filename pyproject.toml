@@ -3,29 +3,31 @@ name = "tool-practice"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "Jason", email = "jasonzuo2009@163.com" }
-]
 requires-python = ">=3.14"
 dependencies = [
-    "requests>=2.34.2",
-    "typer>=0.29.1",
+    "typer>=0.15.1",
 ]
 
 [project.scripts]
-tool-practice = "tool_practice:main"
-
-[[tool.uv.index]]
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-default = true
-
-[build-system]
-requires = ["uv_build>=0.13.8,<0.14.0"]
-build-backend = "uv_build"
+hello-cli = "tool_practice.cli:app"
 
 [dependency-groups]
 dev = [
-    "pytest>=9.2.0",
-    "pytest-cov>=7.1.0",
-    "ruff>=0.17.5",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.9.10",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tool_practice"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

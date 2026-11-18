@@ -1,4 +1,4 @@
-from calculator import add
+from tool_practice.calculator import add
 
 
 def test_add():
